@@ -1,5 +1,3 @@
-Copy
-
 # Use Debian-based Python (better compatibility with scientific packages)
 FROM python:3.11-slim
 
@@ -18,9 +16,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Default command
 CMD ["/bin/bash"]
-
-
-
 
 
 
