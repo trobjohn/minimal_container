@@ -1,12 +1,22 @@
-// .devcontainer/devcontainer.json
 {
-  "name": "Minimal container",
-  "image": "minimal:latest",
-  "settings": {
-    "terminal.integrated.defaultProfile.linux": "bash"
+  "name": "Minimal Python Container",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
   },
-  "extensions": [
-    "ms-python.python",
-    "ms-toolsai.jupyter"
-  ]
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ]
+    }
+  },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "remoteUser": "root"
 }

@@ -1,23 +1,23 @@
-# Use lightweight Alpine with Python
-FROM python:3.11-alpine
+Copy
 
-# Install build dependencies (needed for some Python libs)
-RUN apk add --no-cache build-base
+# Use Debian-based Python (better compatibility with scientific packages)
+FROM python:3.11-slim
 
-# Set a working directory
-WORKDIR /app
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy in your requirements file (if you have one)
+# Set working directory
+WORKDIR /workspace
+
+# Copy and install Python dependencies
 COPY requirements.txt .
-
-# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy your dataset into the container
-COPY get_data.py /app/get_data.py
-
-# Default command (bash shell, for exploration)
-CMD ["/bin/sh"]
+# Default command
+CMD ["/bin/bash"]
 
 
 
@@ -40,9 +40,6 @@ CMD ["/bin/sh"]
 # -t = terminal (run) OR tag (build)
 # --rm = clean up after yourself
 # -o = output file (save)
-
-
-
 
 # The S3 + wget method:
 # Save the image:
