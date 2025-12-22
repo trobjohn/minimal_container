@@ -5,10 +5,11 @@ FROM python:3.11-slim
 RUN apt-get update && apt-get install -y \
     build-essential \
     git \
+    neovim\
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
-WORKDIR /workspace
+WORKDIR /home
 
 # Copy and install Python dependencies
 COPY requirements.txt .
