@@ -1,9 +1,7 @@
+import urllib.request, zipfile, os
+
 def download_data(force=False):
     """Download and extract course data from Zenodo."""
-    import urllib.request
-    import zipfile
-    import os
-    
     zip_path = 'data.zip'
     data_dir = 'data'
     
@@ -19,5 +17,7 @@ def download_data(force=False):
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
             zip_ref.extractall(data_dir)
         print("Data extracted")
-    
-download_data()
+
+
+if __name__ == "__main__":
+    download_data()
