@@ -1,5 +1,5 @@
 {
-  "name": "Minimal Python Container",
+  "name": "Minimal DS/ML Container",
   "build": {
     "dockerfile": "../Dockerfile",
     "context": ".."
@@ -17,6 +17,5 @@
     }
   },
   "workspaceFolder": "/workspace",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
-  "remoteUser": "root"
+  "remoteUser": "user"
 }
